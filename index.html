@@ -1,19 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Get Memphis Auto Rates</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<h1>Get Memphis Auto Insurance Quotes</h1>
-<p>Fast, no-obligation auto insurance quotes.</p>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Get Memphis Auto Insurance Quotes | Fast Local Quotes</title>
+<meta name="description" content="Get fast, no-obligation auto insurance quotes in Memphis. Local help. Quick response. Compare options and save." />
 
-<form>
-<input type="text" placeholder="Full Name" required><br><br>
-<input type="tel" placeholder="Phone Number" required><br><br>
-<input type="email" placeholder="Email" required><br><br>
-<button type="submit">Get My Quote</button>
+<style>
+:root {
+--bg: #0b1220;
+--card: #0f1a33;
+--text: #eaf0ff;
+--muted: rgba(234,240,255,.75);
+--line: rgba(234,240,255,.12);
+--accent: #7c5cff;
+--accent2: #22c55e;
+--shadow: 0 20px 60px rgba(0,0,0,.45);
+--radius: 18px;
+}
+
+* { box-sizing: border-box; }
+body {
+margin: 0;
+font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+color: var(--text);
+background:
+radial-gradient(1200px 600px at 10% 10%, rgba(124,92,255,.25), transparent 55%),
+radial-gradient(900px 450px at 90% 20%, rgba(34,197,94,.18), transparent 55%),
+linear-gradient(180deg, var(--bg), #050816);
+min-height: 100vh;
+}
+
+a { color: inherit; }
+
+.wrap {
+max-width: 1100px;
+margin: 0 auto;
+padding: 24px 18px 70px;
+}
+
+header {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 14px;
+padding: 10px 6px 22px;
+}
+
+.brand {
+display: flex;
+align-items: center;
+gap: 12px;
+text-decoration: none;
+}
+
+.logo {
+width: 42px;
+height: 42px;
+border-radius: 12px;
+background: linear-gradient(135deg, rgba(124,92,255,.95), rgba(34,197,94,.95));
+box-shadow: 0 12px 30px rgba(124,92,255,.22);
+display: grid;
+place-items: center;
+font-weight: 800;
+letter-spacing: .5px;
+}
+
+.brand strong {
+display: block;
+font-size: 14px;
+letter-spacing: .25px;
+}
+.brand span {
+display: block;
+font-size: 12px;
+color: var(--muted);
+margin-top: 2px;
+}
+
+.top-cta {
+display: flex;
+gap: 10px;
+align-items: center;
+}
+
+.pill {
+padding: 10px 12px;
+border: 1px solid var(--line);
+border-radius: 999px;
+color: var(--muted);
+font-size: 12px;
+backdrop-filter: blur(6px);
+}
+
+.grid {
+display: grid;
+grid-template-columns: 1.2fr .85fr;
+gap: 22px;
+align-items: start;
+margin-top: 10px;
+}
+
+@media (max-width: 900px){
+.grid { grid-template-columns: 1fr; }
+header { flex-direction: column; align-items: flex-start; }
+}
+
+.hero {
+padding: 26px 22px;
+border-radius: var(--radius);
+border: 1px solid var(--line);
+background: rgba(15,26,51,.65);
+box-shadow: var(--shadow);
+}
+
+h1 {
+margin: 0 0 10px;
+font-size: clamp(28px, 3.4vw, 44px);
+line-height: 1.08;
+letter-spacing: -0.6px;
+}
+
+.sub {
+margin: 0 0 18px;
+color: var(--muted);
+font-size: 15px;
+line-height: 1.5;
+max-width: 58ch;
+}
+
+.badges {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+margin: 18px 0 0;
+}
+
+.badge {
+display: inline-flex;
+gap: 8px;
+align-items: center;
+padding: 10px 12px;
+border: 1px solid var(--line);
+border-radius: 999px;
+font-size: 12px;
+color: var(--muted);
+background: rgba(255,255,255,.03);
+}
+
+.dot {
+width: 9px;
+height: 9px;
+border-radius: 50%;
+background: var(--accent2);
+box-shadow: 0 0 0 6px rgba(34,197,94,.10);
+}
+
+.card {
+padding: 18px 18px 16px;
+border-radius: var(--radius);
+border: 1px solid var(--line);
+background: rgba(15,26,51,.85);
+box-shadow: var(--shadow);
+position: sticky;
+top: 14px;
+}
+
+.card h2 {
+margin: 0 0 6px;
+font-size: 18px;
+letter-spacing: -0.2px;
+}
+.card p {
+margin: 0 0 14px;
+color: var(--muted);
+font-size: 13px;
+line-height: 1.45;
+}
+
+label {
+display: block;
+margin: 10px 0 6px;
+font-size: 12px;
+color: var(--muted);
+}
+
+input, select {
+width: 100%;
+padding: 12px 12px;
+border-radius: 12px;
+border: 1px solid rgba(234,240,255,.18);
+background: rgba(3,7,18,.55);
+color: var(--text);
+outline: none;
+font-size: 14px;
+}
+
+input:focus, select:focus {
+border-color: rgba(124,92,255,.85);
+box-shadow: 0 0 0 4px rgba(124,92,255,.18);
+}
+
+.row {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+}
+@media (max-width: 520px){
+.row { grid-template-columns: 1fr; }
+}
+
+.btn {
+width: 100%;
+margin-top: 12px;
+padding: 13px 14px;
+border: 0;
+border-radius: 14px;
+background: linear-gradient(135deg, rgba(124,92,255,.98), rgba(34,197,94,.95));
+color: #061022;
+font-weight: 800;
+letter-spacing: .2px;
+cursor: pointer;
+transition: transform .08s ease;
+}
+.btn:active { transform: translateY(1px); }
+
+.fine {
+margin-top: 10px;
+font-size: 11px;
+color: rgba(234,240,255,.60);
+line-height: 1.45;
+}
+
+.trust {
+margin-top: 14px;
+padding-top: 12px;
+border-top: 1px solid var(--line);
+display: grid;
+gap: 8px;
+}
+
+.trust div {
+font-size: 12px;
+color: rgba(234,240,255,.70);
+display: flex;
+gap: 8px;
+align-items: center;
+}
+
+.check {
+width: 18px;
+height: 18px;
+border-radius: 6px;
+background: rgba(34,197,94,.18);
+display: grid;
+place-items: center;
+border: 1px solid rgba(34,197,94,.35);
+color: #b7ffd1;
+font-weight: 900;
+font-size: 12px;
+}
+
+footer {
+margin-top: 22px;
+color: rgba(234,240,255,.55);
+font-size: 12px;
+line-height: 1.5;
+padding: 0 6px;
+}
+
+.success {
+display: none;
+margin-top: 10px;
+padding: 10px 12px;
+border-radius: 12px;
+border: 1px solid rgba(34,197,94,.35);
+background: rgba(34,197,94,.12);
+color: #c9ffe0;
+font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<header>
+<a class="brand" href="#" aria-label="Get Memphis Auto Rates">
+<div class="logo">GM</div>
+<div>
+<strong>Get Memphis Auto Rates</strong>
+<span>Fast quotes • Local help</span>
+</div>
+</a>
+
+<div class="top-cta">
+<div class="pill">No obligation • Quick response</div>
+</div>
+</header>
+
+<div class="grid">
+<section class="hero">
+<h1>Get Memphis Auto Insurance Quotes — fast.</h1>
+<p class="sub">
+Submit your info and we’ll reach out with options. If you’ve had tickets, lapses, or rate increases — still apply.
+We’ll work to find a fit.
+</p>
+
+<div class="badges">
+<div class="badge"><span class="dot"></span> Memphis-focused</div>
+<div class="badge">Compare options</div>
+<div class="badge">Quick callback/text</div>
+<div class="badge">No spam policy</div>
+</div>
+
+<footer>
+<div><strong>Note:</strong> This page collects quote requests and does not guarantee coverage, pricing, or approval. Final rates/eligibility depend on underwriting and carrier guidelines.</div>
+</footer>
+</section>
+
+<aside class="card">
+<h2>Request a quote</h2>
+<p>Fill this out — we’ll contact you ASAP. (Takes ~30 seconds.)</p>
+
+<!--
+IMPORTANT:
+Right now this form is "front-end only".
+Next step is wiring it to Google Sheets / email / CRM.
+We'll do that after you confirm the design.
+-->
+<form id="quoteForm">
+<label for="fullName">Full Name</label>
+<input id="fullName" name="fullName" type="text" placeholder="e.g., Jordan Smith" required />
+
+<div class="row">
+<div>
+<label for="phone">Phone Number</label>
+<input id="phone" name="phone" type="tel" placeholder="e.g., 901-555-0123" required />
+</div>
+<div>
+<label for="email">Email</label>
+<input id="email" name="email" type="email" placeholder="e.g., you@email.com" required />
+</div>
+</div>
+
+<label for="zip">ZIP Code</label>
+<input id="zip" name="zip" type="text" inputmode="numeric" placeholder="e.g., 38104" maxlength="10" />
+
+<label for="contactPref">Preferred Contact</label>
+<select id="contactPref" name="contactPref">
+<option value="text">Text</option>
+<option value="call">Call</option>
+<option value="email">Email</option>
+</select>
+
+<button class="btn" type="submit">Get My Quote</button>
+
+<div class="success" id="successBox">
+✅ Submitted! If you don’t hear back shortly, try again or refresh the page.
+</div>
+
+<div class="fine">
+By submitting, you agree to be contacted about your request (call/text/email). Message/data rates may apply.
+</div>
+
+<div class="trust">
+<div><span class="check">✓</span> Clean, simple intake</div>
+<div><span class="check">✓</span> Built for mobile</div>
+<div><span class="check">✓</span> Ready for ads + tracking</div>
+</div>
 </form>
+</aside>
+</div>
+</div>
+
+<script>
+// Temporary front-end behavior so users get feedback.
+// Next step: wire this to Google Sheets / email / CRM.
+document.getElementById("quoteForm").addEventListener("submit", function(e){
+e.preventDefault();
+document.getElementById("successBox").style.display = "block";
+this.reset();
+});
+</script>
 </body>
 </html>
